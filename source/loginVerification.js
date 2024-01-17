@@ -128,7 +128,9 @@ function IsAlreadyHaveProductId(uid) {
       get(child(reference, "products/" + data.Regproductid))
         .then((snap) => {
           let pid = snap.val();
-          location.replace(`../waterlevelUI/${pid.ui}ui.html`);
+          location.replace(
+            `../water-level-indicator/waterlevelUI/${pid.ui}ui.html`
+          );
         })
         .catch((e) => {
           initialLoader.classList.add("d-none");
