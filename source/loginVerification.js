@@ -90,7 +90,9 @@ function uicheck(productid, data) {
     Regproductid: productid,
   })
     .then(() => {
-      location.replace(`water-level-indicator/waterlevelUI/${data.ui}ui.html`);
+      location.replace(
+        `../water-level-indicator/waterlevelUI/${data.ui}ui.html`
+      );
       console.log("logged out");
       // localStorage.removeItem("userid<@#(1029384756)#@>");
       // localStorage.removeItem("userEmail<@#(0192837465)#@>");
@@ -126,7 +128,7 @@ function IsAlreadyHaveProductId(uid) {
       get(child(reference, "products/" + data.Regproductid))
         .then((snap) => {
           let pid = snap.val();
-          location.replace(`/waterlevelUI/${pid.ui}ui.html`);
+          location.replace(`../waterlevelUI/${pid.ui}ui.html`);
         })
         .catch((e) => {
           initialLoader.classList.add("d-none");
