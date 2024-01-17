@@ -90,7 +90,9 @@ function uicheck(productid, data) {
     Regproductid: productid,
   })
     .then(() => {
-      location.replace(`./waterlevelUI/${data.ui}ui.html`);
+      location.replace(
+        `../water-level-indicator/waterlevelUI/${data.ui}ui.html`
+      );
       console.log("logged out");
       // localStorage.removeItem("userid<@#(1029384756)#@>");
       // localStorage.removeItem("userEmail<@#(0192837465)#@>");
