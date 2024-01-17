@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+
+</head>
+<body>
+    <div>
+        <form id="signup-form">
+            <h1>Sign Up</h1>
+            <input type="text" id="signup-name" placeholder="Full Name" required>
+            <input type="email" id="signup-email" placeholder="Email" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
+            <div class="error" id="signup-error"></div>
+          </form>
+    <a href="index.html">Back to login</a>
+
+        </div>
+
+       <script type="text/javascript">
+        const firebaseConfig = {
+    apiKey: "AIzaSyCvSaKQo98k6DSzrG01bLjkOeYoeq4E7DY",
+    authDomain: "water-level-indicator-14606.firebaseapp.com",
+    projectId: "water-level-indicator-14606",
+    databaseURL:"https://water-level-indicator-14606-default-rtdb.firebaseio.com/",
+    storageBucket: "water-level-indicator-14606.appspot.com",
+    messagingSenderId: "56987502786",
+    appId: "1:56987502786:web:fdf8ea92b2f14bdec1935b"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var contactformDB=firebase.database().ref('user');
+    
+  
+        // Sign up form
+  var signupForm = document.getElementById("signup-form");
+  var signupName = document.getElementById("signup-name");
+  var signupEmail = document.getElementById("signup-email");
+  var signupPassword = document.getElementById("signup-password");
+  var signupConfirmPassword = document.getElementById("signup-confirm-password");
+  var signupError = document.getElementById("signup-error");
+  
+  signupForm.addEventListener("submit", function(event) {
+    
+    event.preventDefault();
+    
+    var name = signupName.value;
+    var email = signupEmail.value;
+    var password = signupPassword.value;
+    var confirmPassword = signupConfirmPassword.value;
+    const save= (name,email,pwd)=>{
+    var newform=contactformDB.push();
+    newform.set({
+        UserName :name,
+        email:email,
+        password:pwd
+    });
+    };
+    
+    // Add validation logic for password and confirm password match
+    if (password !== confirmPassword) {
+      signupError.innerText = "Passwords do not match";
+      return;
+    }
+  
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(function() {
+        // Sign up successful, redirect or perform additional actions
+        save(name,email,password);
+        alert("Sign up successful!");
+      })
+      .catch(function(error) {
+        // Handle sign up errors
+        console.log(error)
+        var errorMessage = error.message;
+        signupError.innerText = errorMessage;
+      });
+  });
+  
+       </script>
+        
+</body>
+</html>
