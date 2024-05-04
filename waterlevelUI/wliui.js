@@ -135,7 +135,7 @@ toggleButton.addEventListener("click", function () {
     AutoOrManualToggle.innerHTML = "<b>AutoMode On</b>";
     updatingWorkingmode("Auto", "disabled");
     manualControlBtn.setAttribute("disabled", "true");
-    btnstatus.innerHTML = "Diasabled=> When Turn on Auto mode";
+    btnstatus.innerHTML = "Diasabled<br>When Turn on Auto mode";
     powerButton.classList.remove("on", isOn);
 
     //   console.log(`The class name "${classNameToCheck}" exists on the element.`);
@@ -172,3 +172,5 @@ $(".navTrigger").click(function () {
   $("#mainListDiv").toggleClass("show_list");
   $("#mainListDiv").fadeIn();
 });
+
+setInterval(productData, 3000);
