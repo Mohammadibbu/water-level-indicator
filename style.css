@@ -3,9 +3,9 @@
   box-sizing: border-box; /*#2b3f2b*/
 }
 :root {
-  --default-color: #2b3f2b;
+  --default-color: #c51ac5;
 }
-body {
+/* body {
   font-family: "Mochiy Pop One", sans-serif;
   font-family: "Pangolin", cursive;
   background: rgba(47, 75, 75, 0.958420868347339) 4%;
@@ -14,9 +14,40 @@ body {
   align-items: center;
   margin: 0;
   /* margin: 50px 0; */
+/* } */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-family: "Pangolin", cursive;
+  background: rgba(212, 224, 224, 0.958) 4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+ 
 }
 
-.container {
+.containerr {
+  position: relative;
+  z-index: 1; /* Ensure the content is above the SVG */
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23e7008a" fill-opacity="1" d="M0,288L60,261.3C120,235,240,181,360,160C480,139,600,149,720,133.3C840,117,960,75,1080,96C1200,117,1320,203,1380,245.3L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>');
+  background-size: cover;
+  z-index: 0; /* Ensure the SVG is behind the content */
+  opacity: 0.5; 
+}
+
+.containerr {
   background-color: #fff;
   padding: 20px;
   margin: 50px;
@@ -25,7 +56,7 @@ body {
   width: 300px;
   /* position: relative; */
 }
-.container .login-form-email,
+.containerr .login-form-email,
 .login-form-password,
 .signup-form-name,
 .signup-form-email,
@@ -43,20 +74,6 @@ body {
   background-color: transparent;
   color: #0b0c0b;
 }
-/* #SendOtp {
-  position: absolute;
-  top: 20px;
-  left: 75%;
-  border: none;
-  width: 80px;
-  padding: 3px;
-  background-color: transparent;
-  color: #0b0c0b;
-  cursor: pointer;
-}
-#SendOtp:hover {
-  color: gray;
-} */
 
 .header-container {
   text-align: center;
@@ -76,7 +93,7 @@ input:focus {
   border-bottom: #216625 3px solid;
 }
 
-.btn {
+.btns{
   font-family: "Mochiy Pop One", sans-serif;
   font-family: "Pangolin", cursive;
   width: 100%;
@@ -93,7 +110,7 @@ input:focus {
 }
 
 .btn:hover {
-  background-color: #406142;
+  background-color: #bd18d3;
 }
 
 p {
@@ -201,4 +218,45 @@ label {
 }
 .d-block {
   display: block;
+}
+
+.alertContainer {
+  position: fixed;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50px;
+  right:0;
+  min-width: 90px;
+  max-width: 300px;
+  z-index: 999999;
+  transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+}
+.alert-icon {
+  font-size: 1.3em;
+  margin-right: 10px;
+  color: #ffffff;
+}
+.alert-error {
+  background-color: #d9534f;
+  color: #ffffff;
+  border-color: #d9534f;
+}
+
+.alert-successful {
+  background-color: #5fde5b;
+  color: #ffffff;
+  border-color: #64da46;
+}
+
+.alert-information {
+  background-color: #5bc0de;
+  color: #ffffff;
+  border-color: #46b8da;
+}
+
+.alert-warn {
+  background-color: #f0ad4e;
+  color: #ffffff;
+  border-color: #eea236;
 }

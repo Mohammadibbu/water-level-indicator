@@ -24,11 +24,40 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"
     ></script>
-  </head>
-  <body>
-    <div class="container">
-      <!-- <img src="img.png" alt="img" id="img"> -->
+    <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+  <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+ 
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  >
+ </script>
 
+
+
+  </head>
+  <body>   
+
+    <div id="alertContainer"  class="alertContainer"></div>
+  
+    <div class="containerr">
+      <!-- <img src="img.png" alt="img" id="img"> -->
+       
       <form class="login-form" id="login-form">
         <div class="header-container"><h1>Login</h1></div>
         <div class="login-form-email">
@@ -59,11 +88,10 @@
 
         <a href="forget password.html" id="fp">Forget password?</a>
 
-        <button type="submit" id="login-btn" class="btn">
+        <button type="submit" id="login-btn" class="btns">
           Login <i class="fa"></i>
         </button>
-        <!-- error-message -->
-        <div id="login-error" class="d-none"></div>
+     
 
         <span style="color: rgb(121, 121, 69)">____________OR___________</span>
 
@@ -133,11 +161,10 @@
             <i class="fa fa-eye" id="eye-3"></i>
           </b>
         </div>
-        <button type="submit" id="signup_btn" class="btn">
+        <button type="submit" id="signup_btn" class="btns">
           Sign Up<i class="fa"></i>
         </button>
-        <!-- error-message for signup -->
-        <div id="signup-error" style="text-align: center" class="d-none"></div>
+       
         <!-- <span style="color: rgb(121, 121, 69)"
           >_____________OR_____________</span
         >

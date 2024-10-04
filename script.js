@@ -40,6 +40,34 @@ let showpassword = (showpwdElId, styleclassElId) => {
 //clear all session storage
 // window.onload = ;
 //---------------------showpassword template------------------------------------
+
+function showAlert(message, type) {
+  const alertContainer = document.getElementById("alertContainer");
+  const alertElement = document.createElement("div");
+  alertElement.className = `alert alert-${type} alert-custom alert-dismissible fade show`;
+  alertElement.role = "alert";
+  // Define icons based on type
+  const icons = {
+    error: "bi bi-x-circle",
+    successful: "bi bi-check-circle",
+    information: "bi bi-info-circle",
+    warn: "bi bi-exclamation-triangle",
+  };
+
+  alertElement.innerHTML = `
+    <i class="${icons[type]} alert-icon"></i>
+    ${message}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>`;
+
+  alertContainer.appendChild(alertElement);
+
+  // Automatically remove the alert after a few seconds
+  setTimeout(() => {
+    $(alertElement).alert("close");
+  }, 5000);
+}
 //---------------------switch signup and login form------------
 document
   .querySelector(".signup-link a")
@@ -206,7 +234,7 @@ loginForm_btn.addEventListener("click", (e) => {
   e.preventDefault();
   navigator.vibrate([100]);
 
-  loginError.classList.remove("d-none");
+ 
   btnDisableOrEnable(loginForm_btn);
   btnDisableOrEnable(LoginWithGoogle);
   loginForm_btn.children[0].classList.add("fa-spinner", "fa-spin");
@@ -292,28 +320,32 @@ loginForm_btn.addEventListener("click", (e) => {
 
       console.error(e);
       if (email === "" || password === "") {
-        loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>*Please fill all Required fields</div>`;
-      } else if (e.code === "auth/invalid-email") {
-        loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>invalid mail id</div>`;
-      } else if (e.code === "auth/user-disabled") {
-        loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Your account has been suspended Please Contact Admin</div>`;
-      } else if (e.code === "auth/user-not-found") {
-        loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>No User found in this mail-id\nplease sign-up</div>`;
-      } else if (e.code === "auth/wrong-password") {
-        loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Wrong Password</div>`;
-      } else if (e.code === "auth/network-request-failed") {
-        loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Login Failed Due to Network Issue</div>`;
-      } else if (e.code === "auth/too-many-requests") {
-        loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Too many request <br>please try after sometimes</div>`;
-      } else {
-        loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>${e.message}</div>`;
-      }
-
-      setTimeout(() => {
-        loginError.innerHTML = "";
-      }, 10000);
-
-      // }
+        showAlert("Please fill all required fields","error");
+    } else {
+        switch (e.code) {
+            case "auth/invalid-email":
+                showAlert( "Invalid email ID","error");
+                break;
+            case "auth/user-disabled":
+                showAlert( "Your account has been suspended. Please contact admin.","error");
+                break;
+            case "auth/user-not-found":
+                showAlert( "No user found with this email ID. Please sign up.","error");
+                break;
+            case "auth/wrong-password":
+                showAlert( "Wrong password","error");
+                break;
+            case "auth/network-request-failed":
+                showAlert( "Login failed due to network issue","error");
+                break;
+            case "auth/too-many-requests":
+                showAlert( "Too many requests. Please try again later.","error");
+                break;
+            default:
+                showAlert( e.message,"error");
+                break;
+        }
+    }  
     });
 });
 
@@ -342,47 +374,6 @@ signUpConfirmShowpwd.addEventListener("click", (e) => {
 });
 // ------------------------------------------------------------
 
-// function SendOTPMail(mail) {
-//   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-//     document.getElementById("SendOtp").style.display = "none";
-//     RandomOtp = Math.floor(Math.random() * (100000 - 999999)) + 999999;
-//     console.log(RandomOtp);
-//     otp.value = RandomOtp;
-// var params = {
-//   ToEmail: signupEmail.value,
-//   message: RandomOtp,
-// };
-
-// // console.log(params);
-// emailjs
-//   .send("service_0qguk7m", "template_q8tiidj", params, "Wv2X6C6WGZ-K-YYKL")
-//   .then(
-//     function (response) {
-//       console.log("SUCCESS!", response.status, response.text);
-//     },
-//     function (error) {
-//       if (error.status == 422) {
-//         signupError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>please enter Mail id For otp verification</div>`;
-//       }
-//       console.log("FAILED...", error);
-//     }
-//   );
-//     return true;
-//   }
-//   alert("You have entered an invalid email address!");
-//   return false;
-// }
-// document.getElementById("SendOtp").addEventListener("click", (e) => {
-//   SendOTPMail(signupEmail.value);
-//   e.preventDefault();
-// });
-// document.getElementById("s").addEventListener("click", (e) => {
-//   e.preventDefault();
-//   document.getElementById("SendOtp").style.display = "block";
-// });
-// var otp = document.getElementById("otp");
-// var RandomOtp = null;
-
 // Sign up form
 
 var signupForm = document.getElementById("signup-form");
@@ -402,7 +393,7 @@ signup_btn.addEventListener("click", function (event) {
   navigator.vibrate([100]);
 
   event.preventDefault();
-  signupError.classList.remove("d-none");
+ 
   btnDisableOrEnable(signup_btn);
 
   signup_btn.children[0].classList.add("fa-spinner", "fa-spin");
@@ -415,14 +406,9 @@ signup_btn.addEventListener("click", function (event) {
   // Add validation logic for password and confirm password match
   if (password !== confirmPassword) {
     navigator.vibrate([100, 50, 100]);
-
-    signupError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>password do not match</div>`;
+showAlert("Password do not Match","error")
     signup_btn.children[0].classList.remove("fa-spinner", "fa-spin");
     btnDisableOrEnable(signup_btn);
-
-    setTimeout(() => {
-      signupError.innerHTML = "";
-    }, 4000);
   } else if (
     name === "" ||
     email === "" ||
@@ -430,23 +416,12 @@ signup_btn.addEventListener("click", function (event) {
     password === ""
   ) {
     navigator.vibrate([100, 50, 100]);
+    showAlert("*Please fill all Required fields","error")
 
     signup_btn.children[0].classList.remove("fa-spinner", "fa-spin");
     btnDisableOrEnable(signup_btn);
-
-    signupError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>*Please fill all Required fields</div>`;
-    setTimeout(() => {
-      signupError.innerHTML = "";
-    }, 5000);
   }
-  //  else if (Number(otp.value) !== RandomOtp) {
-  //   signupError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Invalid OTP!</div>`;
-  //   setTimeout(() => {
-  //     signupError.innerHTML = "";
-  //   }, 4000);
-
-  //   console.log("invalid Otp", RandomOtp, otp.value);
-  // }
+ 
   else {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userdetails) => {
@@ -472,12 +447,10 @@ signup_btn.addEventListener("click", function (event) {
           userdetails.user.emailVerified,
           false
         );
-
-        signupError.innerHTML = `<div class="alert" style="background-color: green !important;" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>sign up successfully</div>`;
+      
+        showAlert("sign up successfully","successful")
         setTimeout(() => {
           signupForm.reset();
-          signupError.innerHTML = "";
-
           document.querySelector(".login-form").style.display = "block";
           document.querySelector(".signup-form").style.display = "none";
         }, 2000);
@@ -488,19 +461,23 @@ signup_btn.addEventListener("click", function (event) {
         signup_btn.children[0].classList.remove("fa-spinner", "fa-spin");
         btnDisableOrEnable(signup_btn);
         navigator.vibrate([100, 50, 100]);
-        if (e.code === "auth/network-request-failed") {
-          loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Login Failed Due to Network Issue</div>`;
-        } else if (e.code === "auth/email-already-in-use") {
-          signupError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Email id is already Exists</div>`;
-        } else if (e.code === "auth/invalid-email") {
-          signupError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Invalid Mailid</div>`;
-        } else {
-          signupError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>${e.message}</div>`;
-        }
+        switch (e.code) {
+          case "auth/network-request-failed":
+              showAlert("Login failed due to network issue", "error", );
+              break;
+          case "auth/email-already-in-use":
+              showAlert("Email ID already exists", "error");
+              break;
+          case "auth/invalid-email":
+              showAlert("Invalid email ID", "error");
+              break;
+          default:
+              showAlert( e.message, "error");
+              break;
+      }
 
-        setTimeout(() => {
-          signupError.innerHTML = "";
-        }, 7000);
+       
       });
   }
 });
+
