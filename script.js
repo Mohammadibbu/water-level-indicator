@@ -107,7 +107,7 @@ var loginForm = document.getElementById("login-form");
 var loginForm_btn = document.getElementById("login-btn");
 var loginEmail = document.getElementById("login-email");
 var loginPassword = document.getElementById("login-password");
-var loginError = document.getElementById("login-error");
+
 var LoginWithGoogle = document.getElementById("google-login");
 //google provider log in--------------------------------
 //add Display:None for err message template
@@ -148,7 +148,7 @@ function setEmailVerify(data, refid) {
 LoginWithGoogle.addEventListener("click", (e) => {
   e.preventDefault();
   navigator.vibrate([100]);
-  loginError.classList.add("d-none");
+ 
   //when click the button BUtton will disabled
   btnDisableOrEnable(loginForm_btn);
   btnDisableOrEnable(LoginWithGoogle);
@@ -158,8 +158,7 @@ LoginWithGoogle.addEventListener("click", (e) => {
       loginForm_btn.children[0].classList.remove("fa-spinner", "fa-spin");
       btnDisableOrEnable(loginForm_btn);
       btnDisableOrEnable(LoginWithGoogle);
-      loginError.classList.remove("d-none");
-
+  
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
@@ -205,18 +204,19 @@ LoginWithGoogle.addEventListener("click", (e) => {
       btnDisableOrEnable(loginForm_btn);
       btnDisableOrEnable(LoginWithGoogle);
       loginForm_btn.children[0].classList.remove("fa-spinner", "fa-spin");
-      loginError.classList.remove("d-none");
-      if (
-        error.code == "auth/popup-closed-by-user" ||
-        error.code == "auth/cancelled-popup-request"
-      ) {
-        loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Something Went Wrong! please try again</div>`;
-      } else if (error.code == "auth/popup-blocked") {
-        loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Your Browser may Block the Pop-up</div>`;
-      } else {
-        loginError.innerHTML = `<div class="alert" ><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>${error.message}</div>`;
-      }
-
+     
+      switch (error.code) {
+        case "auth/popup-closed-by-user":
+        case "auth/cancelled-popup-request":
+            showAlert("Something went wrong! Please try again.", "error");
+            break;
+        case "auth/popup-blocked":
+            showAlert( "error", "Your browser may block the pop-up.");
+            break;
+        default:
+            showAlert(error.message, "error");
+            break;
+    }
       console.error(error.code);
       // const errorCode = error.code;
       // const errorMessage = error.message;
@@ -273,7 +273,7 @@ loginForm_btn.addEventListener("click", (e) => {
           alert("If already sent please check your mail id");
         }
       } else {
-        loginError.innerHTML = `<div class="alert" style="background-color: #53f877 !important;" >Login Successfully...<i class="fa fa-spinner fa-spin"></i></div>`;
+        showAlert("Login Successfully...","successful")
         navigator.vibrate([100, 50, 100]);
 
         sessionStorage.setItem(
