@@ -77,8 +77,8 @@ button {
 }
 
 .water-tank {
-  width: 300px;
-  height: 400px;
+  width: 150px;
+  height: 200px;
   background-color: #e3e9c8;
 
   border: 3px solid #333;
@@ -89,9 +89,9 @@ button {
 .top {
   border: 2px solid black;
   position: absolute;
-  width: 47%;
+  width: 45%;
   height: 6%;
-  top: 16%;
+  top: 28%;
   border-radius: 10px;
   background-color: #d5ff1a;
   left: 50%;
@@ -100,7 +100,7 @@ button {
 }
 .water {
   width: 100%;
-  background-color: #007bff;
+  background-color: #3e9bfd;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -152,6 +152,24 @@ button {
 .tank {
   position: relative;
   padding-top: 100px;
+}
+
+
+.wave {
+  position: absolute;
+  bottom: 95px; /* Align wave to the bottom of the tank */
+  width: 200%; /* Increase width to allow for smooth animation */
+  animation: wave-animation 4s linear infinite; /* Adjusted speed */
+}
+
+@keyframes wave-animation {
+  0% {
+      transform: translateX(0);
+  }
+  
+  100% {
+      transform: translateX(-50%);
+  }
 }
 .layer1 {
   position: absolute;
