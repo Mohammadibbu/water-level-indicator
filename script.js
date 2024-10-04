@@ -143,8 +143,7 @@ function setEmailVerify(data, refid) {
     : console.warn("mailid already verified true");
 }
 // ---------------------------------------------------------
-add_none(loginEmail, loginError);
-add_none(loginPassword, loginError);
+
 //login with google......
 LoginWithGoogle.addEventListener("click", (e) => {
   e.preventDefault();
@@ -383,10 +382,6 @@ var signupPassword = document.getElementById("signup-pwd");
 var signupConfirmPassword = document.getElementById("confirm-password");
 var signupError = document.getElementById("signup-error");
 let signup_btn = document.getElementById("signup_btn");
-add_none(signupName, signupError);
-add_none(signupEmail, signupError);
-add_none(signupPassword, signupError);
-add_none(signupConfirmPassword, signupError);
 
 // signup process done here...
 signup_btn.addEventListener("click", function (event) {
