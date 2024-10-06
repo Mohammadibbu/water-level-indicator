@@ -108,7 +108,7 @@ var loginForm_btn = document.getElementById("login-btn");
 var loginEmail = document.getElementById("login-email");
 var loginPassword = document.getElementById("login-password");
 
-var LoginWithGoogle = document.getElementById("google-login");
+// var LoginWithGoogle = document.getElementById("google-login");
 //google provider log in--------------------------------
 //add Display:None for err message template
 function add_none(WhichELPerformEventListener, whereTOAddclass) {
@@ -145,88 +145,88 @@ function setEmailVerify(data, refid) {
 // ---------------------------------------------------------
 
 //login with google......
-LoginWithGoogle.addEventListener("click", (e) => {
-  e.preventDefault();
-  navigator.vibrate([100]);
+// LoginWithGoogle.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   navigator.vibrate([100]);
  
-  //when click the button BUtton will disabled
-  btnDisableOrEnable(loginForm_btn);
-  btnDisableOrEnable(LoginWithGoogle);
-  loginForm_btn.children[0].classList.add("fa-spinner", "fa-spin");
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      loginForm_btn.children[0].classList.remove("fa-spinner", "fa-spin");
-      btnDisableOrEnable(loginForm_btn);
-      btnDisableOrEnable(LoginWithGoogle);
+//   //when click the button BUtton will disabled
+//   btnDisableOrEnable(loginForm_btn);
+//   btnDisableOrEnable(LoginWithGoogle);
+//   loginForm_btn.children[0].classList.add("fa-spinner", "fa-spin");
+//   signInWithPopup(auth, provider)
+//     .then((result) => {
+//       loginForm_btn.children[0].classList.remove("fa-spinner", "fa-spin");
+//       btnDisableOrEnable(loginForm_btn);
+//       btnDisableOrEnable(LoginWithGoogle);
   
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      // console.log(token);
+//       // This gives you a Google Access Token. You can use it to access the Google API.
+//       const credential = GoogleAuthProvider.credentialFromResult(result);
+//       const token = credential.accessToken;
+//       // The signed-in user info.
+//       const user = result.user;
+//       // console.log(token);
 
-      loginError.innerHTML = `<div class="alert" style="background-color: #53f877 !important;" >Login Successfully...<i class="fa fa-spinner fa-spin"></i></div>`;
-      // localStorage.setItem("userid<@#(1029384756)#@>", result.user.uid);
-      // localStorage.setItem(
-      //   "userEmail<@#(0192837465)#@>",
-      //   JSON.stringify(result.user)
-      // );
-      sessionStorage.setItem("userid<@#(1029384756)#@>", result.user.uid);
-      sessionStorage.setItem(
-        "userEmail<@#(0192837465)#@>",
-        JSON.stringify(result.user)
-      );
-      // sessionStorage.setItem("LOgiN#@$%^&;;", true);
-      save(
-        user.uid,
-        user.displayName,
-        user.email,
-        "Login with google",
-        user.emailVerified,
-        true
-      );
-      setTimeout(() => {
-        location.replace("mainpage.html");
-      }, 1500);
+//       loginError.innerHTML = `<div class="alert" style="background-color: #53f877 !important;" >Login Successfully...<i class="fa fa-spinner fa-spin"></i></div>`;
+//       // localStorage.setItem("userid<@#(1029384756)#@>", result.user.uid);
+//       // localStorage.setItem(
+//       //   "userEmail<@#(0192837465)#@>",
+//       //   JSON.stringify(result.user)
+//       // );
+//       sessionStorage.setItem("userid<@#(1029384756)#@>", result.user.uid);
+//       sessionStorage.setItem(
+//         "userEmail<@#(0192837465)#@>",
+//         JSON.stringify(result.user)
+//       );
+//       // sessionStorage.setItem("LOgiN#@$%^&;;", true);
+//       save(
+//         user.uid,
+//         user.displayName,
+//         user.email,
+//         "Login with google",
+//         user.emailVerified,
+//         true
+//       );
+//       setTimeout(() => {
+//         location.replace("mainpage.html");
+//       }, 1500);
 
-      // console.log("user name", user.displayName);
-      // console.log("user details", user);
-      // console.log("user mail", user.email);
-      // console.log("user verified", user.emailVerified);
-      // console.log("user pic", user.photoURL);
-      console.log("user credential", credential);
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      btnDisableOrEnable(loginForm_btn);
-      btnDisableOrEnable(LoginWithGoogle);
-      loginForm_btn.children[0].classList.remove("fa-spinner", "fa-spin");
+//       // console.log("user name", user.displayName);
+//       // console.log("user details", user);
+//       // console.log("user mail", user.email);
+//       // console.log("user verified", user.emailVerified);
+//       // console.log("user pic", user.photoURL);
+//       console.log("user credential", credential);
+//       // IdP data available using getAdditionalUserInfo(result)
+//       // ...
+//     })
+//     .catch((error) => {
+//       // Handle Errors here.
+//       btnDisableOrEnable(loginForm_btn);
+//       btnDisableOrEnable(LoginWithGoogle);
+//       loginForm_btn.children[0].classList.remove("fa-spinner", "fa-spin");
      
-      switch (error.code) {
-        case "auth/popup-closed-by-user":
-        case "auth/cancelled-popup-request":
-            showAlert("Something went wrong! Please try again.", "error");
-            break;
-        case "auth/popup-blocked":
-            showAlert( "error", "Your browser may block the pop-up.");
-            break;
-        default:
-            showAlert(error.message, "error");
-            break;
-    }
-      console.error(error.code);
-      // const errorCode = error.code;
-      // const errorMessage = error.message;
-      // The email of the user's account used.
-      // const email = error.customData.email;
-      // The AuthCredential type that was used.
-      // const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
-});
+//       switch (error.code) {
+//         case "auth/popup-closed-by-user":
+//         case "auth/cancelled-popup-request":
+//             showAlert("Something went wrong! Please try again.", "error");
+//             break;
+//         case "auth/popup-blocked":
+//             showAlert( "error", "Your browser may block the pop-up.");
+//             break;
+//         default:
+//             showAlert(error.message, "error");
+//             break;
+//     }
+//       console.error(error.code);
+//       // const errorCode = error.code;
+//       // const errorMessage = error.message;
+//       // The email of the user's account used.
+//       // const email = error.customData.email;
+//       // The AuthCredential type that was used.
+//       // const credential = GoogleAuthProvider.credentialFromError(error);
+//       // ...
+//     });
+// });
 
 //perform login form action
 loginForm_btn.addEventListener("click", (e) => {
@@ -235,7 +235,7 @@ loginForm_btn.addEventListener("click", (e) => {
 
  
   btnDisableOrEnable(loginForm_btn);
-  btnDisableOrEnable(LoginWithGoogle);
+  // btnDisableOrEnable(LoginWithGoogle);
   loginForm_btn.children[0].classList.add("fa-spinner", "fa-spin");
   let email = loginEmail.value;
   let password = loginPassword.value;
@@ -244,7 +244,7 @@ loginForm_btn.addEventListener("click", (e) => {
     .then((userdetails) => {
       loginForm_btn.children[0].classList.remove("fa-spinner", "fa-spin");
       btnDisableOrEnable(loginForm_btn);
-      btnDisableOrEnable(LoginWithGoogle);
+      // btnDisableOrEnable(LoginWithGoogle);
       console.log("new", auth.currentUser);
 
       if (!userdetails.user.emailVerified) {
@@ -314,7 +314,7 @@ loginForm_btn.addEventListener("click", (e) => {
       // Handle login errors
       loginForm_btn.children[0].classList.remove("fa-spinner", "fa-spin");
       btnDisableOrEnable(loginForm_btn);
-      btnDisableOrEnable(LoginWithGoogle);
+      // btnDisableOrEnable(LoginWithGoogle);
       navigator.vibrate([100, 50, 100]);
 
       console.error(e);
