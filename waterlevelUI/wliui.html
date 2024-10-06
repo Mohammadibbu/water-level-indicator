@@ -24,11 +24,19 @@
         </div>
         <div id="mainListDiv" class="main_list">
           <ul class="navlinks">
-            <li><a href="#" id="pid"></a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#" id="logout">Logout</a></li>
-            <!-- <button id="logout" class="btn">logout</button> -->
-            <li><a href="#">Contact</a></li>
+            <!-- <li><a href="#" id="pid"></a></li> -->
+            <li><a href="#" id="device-list">Devices</a></li>
+            <!-- Modal Dialog -->
+<div id="deviceModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Device Information</h2>
+    <p>Device Name: <span id="deviceName">Device A</span></p>
+    <p>Device ID: <span id="pid">12345</span></p>
+  </div>
+</div>
+
+            <li><a href="#" id="logout">Logout</a></li>    
           </ul>
         </div>
         <span class="navTrigger">

@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
           productData();
           document.getElementById(
             "pid"
-          ).innerHTML = `<i style="color:red">Product id:<i style="color:blue;">${productid}</i></i>`;
+          ).innerHTML = `<i style="color:blue;">${productid}</i>`;
           initialLoader.classList.add("d-none");
         })
         .catch((e) => {
@@ -135,7 +135,7 @@ toggleButton.addEventListener("click", function () {
     AutoOrManualToggle.innerHTML = "<b>AutoMode On</b>";
     updatingWorkingmode("Auto", "disabled");
     manualControlBtn.setAttribute("disabled", "true");
-    btnstatus.innerHTML = "Diasabled<br>When Turn on Auto mode";
+    btnstatus.innerHTML = "Auto mode Enabled";
     powerButton.classList.remove("on", isOn);
 
     //   console.log(`The class name "${classNameToCheck}" exists on the element.`);
@@ -172,5 +172,34 @@ $(".navTrigger").click(function () {
   $("#mainListDiv").toggleClass("show_list");
   $("#mainListDiv").fadeIn();
 });
+
+
+  // Get the modal
+  var modal = document.getElementById('deviceModal');
+
+  // Get the button that opens the modal
+  var deviceLink = document.getElementById('device-list');
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName('close')[0];
+
+  // When the user clicks on the "Devices" link, open the modal
+  deviceLink.onclick = function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+    modal.style.display = 'block'; // Show the modal
+  };
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = 'none'; // Hide the modal
+  };
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none'; // Hide the modal
+    }
+  };
+
 
 setInterval(productData, 3000);
