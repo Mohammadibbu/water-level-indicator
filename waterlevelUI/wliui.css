@@ -655,7 +655,7 @@ input:checked + .slider:before {
 
 .affix {
   padding: 0;
-  background-color: #031d18;
+  background-color: #18031d;
 }
 
 .myH2 {
@@ -696,6 +696,7 @@ input:checked + .slider:before {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 20px;
 }
 
 .close {

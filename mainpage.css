@@ -1,97 +1,127 @@
 @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Pangolin&display=swap");
+
 * {
-  font-family: "Mochiy Pop One", sans-serif;
-  font-family: "Pangolin", cursive;
+    font-family: "Mochiy Pop One", sans-serif;
+    font-family: "Pangolin", cursive;
 }
+
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(208, 233, 224);
 }
+
 nav {
-  background-color: #2b3f2b;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
+  
+    background-color: #4A90E2; /* Attractive blue color */
+    color: white; /* White text for better contrast */
+    padding: 15px 20px; /* Add padding for better spacing */
+    text-align: center;
 }
+
 nav > h2 {
-  color: aliceblue;
+    margin: 0;
+    font-size: 24px;
 }
+
 nav > i {
-  background-color: antiquewhite;
-  border-radius: 3px;
-  padding: 4px;
-  margin-bottom: 20px;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for contrast */
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333; /* Darker text for readability */
 }
+
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 100px;
-  padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
 }
+
+.description {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 18px;
+    color: #333; /* Darker text for better readability */
+    max-width: 600px; /* Limit width for readability */
+    padding: 0 20px; /* Add horizontal padding */
+}
+
 .logout {
-  margin-top: 40px;
-  color: antiquewhite;
+    margin-top: 40px;
+    color: antiquewhite;
 }
+
 .btn {
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  color: #ffffff;
-  background-color: rgb(31, 59, 59);
+    padding: 15px 32px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: rgb(31, 59, 59);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 10px 0; /* Add margin for spacing between buttons */
 }
+
 .btn:hover {
-  cursor: pointer;
-  border: 1px solid gray;
+    background-color: rgb(50, 80, 80); /* Darker shade on hover */
+    transform: translateY(-2px);
 }
+
+.btn:active {
+    transform: translateY(0);
+}
+
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #2b3f2b;
-  /* Adjust the opacity (4th value) to control dimness */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* Make sure the overlay appears above other elements */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(59, 43, 63);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure the overlay appears above other elements */
 }
 
 .loader {
-  border: 5px solid #ffffff; /* Light gray border for the loader */
-  border-top: 5px solid #2b3f2b;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite; /* Apply the spinning animation */
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #d534db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite; /* Spinning animation */
 }
+
 .overlay::after {
-  content: "verifying user details...";
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 30px;
-  font-weight: bold;
+    content: "Verifying user details...";
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
-/* //none and block */
+
+/* Utility classes */
 .d-none {
-  display: none;
+    display: none;
 }
+
 .d-block {
-  display: block;
+    display: block;
 }
