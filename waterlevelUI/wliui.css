@@ -18,18 +18,15 @@ body {
   padding: 10px;
 }
 .actions {
-  /* background-color: #ca191936; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 30px;
-  border: 2px solid rgb(12, 33, 54);
-
+  /* margin-top: 30px; */
   padding: 5%;
   width: 30%;
   height: 200px;
-  border-radius: 20px;
+ 
 }
 .product-details {
   background-color: #a4d6a0;
@@ -56,8 +53,8 @@ button {
   font-size: 40px;
 }
 .power-button {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border: 3px solid gray;
   border-radius: 50%;
   position: relative;
@@ -77,8 +74,8 @@ button {
 }
 
 .water-tank {
-  width: 150px;
-  height: 200px;
+  width: 248px;
+  height: 260px;
   background-color: #e3e9c8;
 
   border: 3px solid #333;
@@ -91,7 +88,7 @@ button {
   position: absolute;
   width: 45%;
   height: 6%;
-  top: 28%;
+  top: 23%;
   border-radius: 10px;
   background-color: #282828;
   left: 50%;
@@ -416,7 +413,6 @@ input:checked + .slider:before {
     flex-direction: column;
   }
   .actions {
-    border: 2px solid rgb(12, 33, 54);
 
     padding: 5%;
     width: 70%;
