@@ -341,7 +341,7 @@ loginForm_btn.addEventListener("click", (e) => {
                 showAlert( "Too many requests. Please try again later.","error");
                 break;
             case "auth/invalid-login-credentials":
-                showAlert( "No user Found");
+                showAlert( "Invalid credentials");
                 break;
             default:
                 showAlert( e.message,"error");
