@@ -46,8 +46,8 @@ function productData() {
 //updatingWorkingmode
 function updatingWorkingmode(AutoOrManual, manualbtnstatus) {
   update(child(ref(connectDB), "products/" + productid), {
-    Workmode: AutoOrManual,
-    manualbutton: manualbtnstatus,
+    mode: AutoOrManual,
+    pump: manualbtnstatus,
   })
     .then(() => {
       //   console.log(AutoOrManual);
@@ -133,14 +133,14 @@ toggleButton.addEventListener("click", function () {
   slider.classList.toggle("active");
   if (slider.classList.contains("active")) {
     AutoOrManualToggle.innerHTML = "<b>AutoMode On</b>";
-    updatingWorkingmode("Auto", "disabled");
+    updatingWorkingmode(true,"Null");
     manualControlBtn.setAttribute("disabled", "true");
     btnstatus.innerHTML = "Auto mode Enabled";
     powerButton.classList.remove("on", isOn);
 
     //   console.log(`The class name "${classNameToCheck}" exists on the element.`);
   } else {
-    updatingWorkingmode("manual", false);
+    updatingWorkingmode(false, false);
     document.getElementById("manual-control-btn").removeAttribute("disabled");
     document.getElementById("auto-manual").innerHTML = "<b>AutoMode Off</b>";
     document.getElementById("manual-status").innerHTML = "off";
@@ -154,11 +154,11 @@ powerButton.addEventListener("click", () => {
   powerButton.classList.toggle("on", isOn);
   if (powerButton.classList.contains("on")) {
     document.getElementById("manual-status").innerHTML = "On";
-    updatingWorkingmode("manual", true);
+    updatingWorkingmode(false, true);
     // productData();
     //   console.log(`The class name "${classNameToCheck}" exists on the element.`);
   } else {
-    updatingWorkingmode("manual", false);
+    updatingWorkingmode(false, false);
     document.getElementById("manual-control-btn").removeAttribute("disabled");
     document.getElementById("manual-status").innerHTML = "Off";
 

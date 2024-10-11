@@ -107,7 +107,7 @@ function uicheck(productid, data) {
 function productCheck() {
   navigator.vibrate([100]);
   let productid = prompt("Enter Your Product id");
-  if (productid !== "" && productid.length == 7) {
+  if (productid !== "" && productid.length == 8) {
     console.log(productid);
     get(child(reference, "products/" + productid))
       .then((snapshot) => {
