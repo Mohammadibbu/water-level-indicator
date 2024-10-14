@@ -38,7 +38,7 @@ function verifyUser(data) {
       document.getElementById("uname").innerText = data.email;
     }
   } else {
-    location.replace("index.html");
+    // location.replace("index.html");
     console.log("no data avail", data);
   }
 }
