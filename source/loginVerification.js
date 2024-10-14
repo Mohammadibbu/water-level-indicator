@@ -43,6 +43,9 @@ function verifyUser(data) {
   }
 }
 // console.log(JSON.parse(localStorage.getItem("userEmail<@#(0192837465)#@>")));
+function deleteCookie(name) {
+  document.cookie = name + "=; Max-Age=0; path=/;";
+}
 
 function logout() {
   navigator.vibrate([100]);
@@ -60,6 +63,8 @@ function logout() {
         sessionStorage.removeItem("userid<@#(1029384756)#@>");
         sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
         sessionStorage.removeItem("LOgiN#@$%^&;;");
+        deleteCookie("userid<@#(1029384756)#@>");
+        deleteCookie("userEmail<@#(0192837465)#@>");
       })
       .catch((e) => {
         alert("something Went Wrong\nplease Try Again\nERROR:", e.code);

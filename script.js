@@ -17,8 +17,20 @@ import {
   remove,
 } from "./source/firebaseinitialization.js";
 //firebase auth init
+
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
+
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null; // Return null if not found
+}
 window.onload = () => {
   const userAuthUid = sessionStorage.getItem("userid<@#(1029384756)#@>");
   const userAuthExtra = JSON.parse(
@@ -26,11 +38,21 @@ window.onload = () => {
   );
   // sessionStorage.removeItem("userid<@#(1029384756)#@>");
   // sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
-  if (userAuthUid && userAuthExtra) {
+  if (
+    getCookie("userid<@#(1029384756)#@>") &&
+    getCookie("userEmail<@#(0192837465)#@>")
+  ) {
+    console.log("get DB");
+
     location.replace("mainpage.html");
   } else {
     return;
   }
+  // if (userAuthUid && userAuthExtra) {
+  //   location.replace("mainpage.html");
+  // } else {
+  //   return;
+  // }
 };
 // -------------showpassword Template--------------------
 
@@ -293,6 +315,25 @@ loginForm_btn.addEventListener("click", (e) => {
           JSON.stringify(userdetails.user)
         );
         sessionStorage.setItem("LOgiN#@$%^&;;", true);
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+          var expires = "";
+          if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+            expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        // Setting cookies with the same functionality
+        setCookie("userid<@#(1029384756)#@>", userdetails.user.uid, 7); // Expires in 7 days
+        setCookie(
+          "userEmail<@#(0192837465)#@>",
+          JSON.stringify(userdetails.user),
+          7
+        );
+        setCookie("LOgiN#@$%^&;;", true, 7);
 
         //set mail verified
         get(child(ref(connectDB), "users/" + userdetails.user.uid))
