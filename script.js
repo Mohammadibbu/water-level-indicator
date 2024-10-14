@@ -33,10 +33,10 @@ function getCookie(name) {
 }
 
 window.onload = () => {
-  const userAuthUid = sessionStorage.getItem("userid<@#(1029384756)#@>");
-  const userAuthExtra = JSON.parse(
-    sessionStorage.getItem("userEmail<@#(0192837465)#@>")
-  );
+  // const userAuthUid = sessionStorage.getItem("userid<@#(1029384756)#@>");
+  // const userAuthExtra = JSON.parse(
+  //   sessionStorage.getItem("userEmail<@#(0192837465)#@>")
+  // );
   // sessionStorage.removeItem("userid<@#(1029384756)#@>");
   // sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
   if (
@@ -307,15 +307,15 @@ loginForm_btn.addEventListener("click", (e) => {
         showAlert("Login Successfully...", "successful");
         navigator.vibrate([100, 50, 100]);
 
-        sessionStorage.setItem(
-          "userid<@#(1029384756)#@>",
-          userdetails.user.uid
-        );
-        sessionStorage.setItem(
-          "userEmail<@#(0192837465)#@>",
-          JSON.stringify(userdetails.user)
-        );
-        sessionStorage.setItem("LOgiN#@$%^&;;", true);
+        // sessionStorage.setItem(
+        //   "userid<@#(1029384756)#@>",
+        //   userdetails.user.uid
+        // );
+        // sessionStorage.setItem(
+        //   "userEmail<@#(0192837465)#@>",
+        //   JSON.stringify(userdetails.user)
+        // );
+        // sessionStorage.setItem("LOgiN#@$%^&;;", true);
         // Function to set a cookie
         function setCookie(name, value, days) {
           var expires = "";

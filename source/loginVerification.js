@@ -27,7 +27,7 @@ function getCookie(name) {
 const userAuthUid = getCookie("userid<@#(1029384756)#@>");
 const userAuthExtra = JSON.parse(getCookie("userEmail<@#(0192837465)#@>"));
 
-const userLogindata = sessionStorage.getItem("LOgiN#@$%^&;;");
+// const userLogindata = sessionStorage.getItem("LOgiN#@$%^&;;");
 
 // console.log(userAuthEmailerified.emailVerified);
 const reference = ref(connectDB);
@@ -73,9 +73,9 @@ function logout() {
         console.log("logged out");
         // localStorage.removeItem("userid<@#(1029384756)#@>");
         // localStorage.removeItem("userEmail<@#(0192837465)#@>");
-        sessionStorage.removeItem("userid<@#(1029384756)#@>");
-        sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
-        sessionStorage.removeItem("LOgiN#@$%^&;;");
+        // sessionStorage.removeItem("userid<@#(1029384756)#@>");
+        // sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
+        // sessionStorage.removeItem("LOgiN#@$%^&;;");
         deleteCookie("userid<@#(1029384756)#@>");
         deleteCookie("userEmail<@#(0192837465)#@>");
       })

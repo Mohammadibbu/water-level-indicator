@@ -72,9 +72,9 @@ function logout(userAuthExtra) {
         console.log("logged out");
         // localStorage.removeItem("userid<@#(1029384756)#@>");
         // localStorage.removeItem("userEmail<@#(0192837465)#@>");
-        sessionStorage.removeItem("userid<@#(1029384756)#@>");
-        sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
-        sessionStorage.removeItem("LOgiN#@$%^&;;");
+        // sessionStorage.removeItem("userid<@#(1029384756)#@>");
+        // sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
+        // sessionStorage.removeItem("LOgiN#@$%^&;;");
         deleteCookie("userid<@#(1029384756)#@>");
         deleteCookie("userEmail<@#(0192837465)#@>");
       })
