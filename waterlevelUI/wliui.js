@@ -58,6 +58,9 @@ function updatingWorkingmode(AutoOrManual, manualbtnstatus) {
 }
 
 //logout
+function deleteCookie(name) {
+  document.cookie = name + "=; Max-Age=0; path=/;";
+}
 function logout(userAuthExtra) {
   if (confirm("Are you Sure To Logout !\n  " + userAuthExtra.email)) {
     console.log("cleared");
@@ -72,6 +75,8 @@ function logout(userAuthExtra) {
         sessionStorage.removeItem("userid<@#(1029384756)#@>");
         sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
         sessionStorage.removeItem("LOgiN#@$%^&;;");
+        deleteCookie("userid<@#(1029384756)#@>");
+        deleteCookie("userEmail<@#(0192837465)#@>");
       })
       .catch((e) => {
         alert("something Went Wrong\nplease Try Again\nERROR:", e.code);

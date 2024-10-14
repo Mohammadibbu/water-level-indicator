@@ -31,6 +31,7 @@ function getCookie(name) {
   }
   return null; // Return null if not found
 }
+
 window.onload = () => {
   const userAuthUid = sessionStorage.getItem("userid<@#(1029384756)#@>");
   const userAuthExtra = JSON.parse(
