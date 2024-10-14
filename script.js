@@ -44,7 +44,7 @@ window.onload = () => {
     getCookie("userEmail<@#(0192837465)#@>")
   ) {
     console.log("get DB");
-    alert("issue 2 script.js");
+
     location.replace("mainpage.html");
     return;
   }
