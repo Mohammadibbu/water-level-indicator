@@ -69,9 +69,9 @@ function logout(userAuthExtra) {
         console.log("logged out");
         // localStorage.removeItem("userid<@#(1029384756)#@>");
         // localStorage.removeItem("userEmail<@#(0192837465)#@>");
-        localStorage.removeItem("userid<@#(1029384756)#@>");
-        localStorage.removeItem("userEmail<@#(0192837465)#@>");
-        localStorage.removeItem("LOgiN#@$%^&;;");
+        sessionStorage.removeItem("userid<@#(1029384756)#@>");
+        sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
+        sessionStorage.removeItem("LOgiN#@$%^&;;");
       })
       .catch((e) => {
         alert("something Went Wrong\nplease Try Again\nERROR:", e.code);
@@ -85,9 +85,9 @@ function logout(userAuthExtra) {
 //-----------------------END  functions------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
-  const userAuthUid = localStorage.getItem("userid<@#(1029384756)#@>");
+  const userAuthUid = sessionStorage.getItem("userid<@#(1029384756)#@>");
   const userAuthExtra = JSON.parse(
-    localStorage.getItem("userEmail<@#(0192837465)#@>")
+    sessionStorage.getItem("userEmail<@#(0192837465)#@>")
   );
   //logout btn
   document.getElementById("logout").addEventListener("click", () => {
