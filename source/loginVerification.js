@@ -195,5 +195,5 @@ get(child(reference, "users/" + userAuthUid))
   })
   .catch((e) => {
     console.log("error while fetching data", e);
-    location.replace("index.html");
+    // location.replace("index.html");
   });
