@@ -148,7 +148,7 @@ function setEmailVerify(data, refid) {
 // LoginWithGoogle.addEventListener("click", (e) => {
 //   e.preventDefault();
 //   navigator.vibrate([100]);
- 
+
 //   //when click the button BUtton will disabled
 //   btnDisableOrEnable(loginForm_btn);
 //   btnDisableOrEnable(LoginWithGoogle);
@@ -158,7 +158,7 @@ function setEmailVerify(data, refid) {
 //       loginForm_btn.children[0].classList.remove("fa-spinner", "fa-spin");
 //       btnDisableOrEnable(loginForm_btn);
 //       btnDisableOrEnable(LoginWithGoogle);
-  
+
 //       // This gives you a Google Access Token. You can use it to access the Google API.
 //       const credential = GoogleAuthProvider.credentialFromResult(result);
 //       const token = credential.accessToken;
@@ -204,7 +204,7 @@ function setEmailVerify(data, refid) {
 //       btnDisableOrEnable(loginForm_btn);
 //       btnDisableOrEnable(LoginWithGoogle);
 //       loginForm_btn.children[0].classList.remove("fa-spinner", "fa-spin");
-     
+
 //       switch (error.code) {
 //         case "auth/popup-closed-by-user":
 //         case "auth/cancelled-popup-request":
@@ -233,7 +233,6 @@ loginForm_btn.addEventListener("click", (e) => {
   e.preventDefault();
   navigator.vibrate([100]);
 
- 
   btnDisableOrEnable(loginForm_btn);
   // btnDisableOrEnable(LoginWithGoogle);
   loginForm_btn.children[0].classList.add("fa-spinner", "fa-spin");
@@ -273,7 +272,7 @@ loginForm_btn.addEventListener("click", (e) => {
           alert("If already sent please check your mail id");
         }
       } else {
-        showAlert("Login Successfully...","successful")
+        showAlert("Login Successfully...", "successful");
         navigator.vibrate([100, 50, 100]);
 
         sessionStorage.setItem(
@@ -319,35 +318,41 @@ loginForm_btn.addEventListener("click", (e) => {
 
       console.error(e);
       if (email === "" || password === "") {
-        showAlert("Please fill all required fields","error");
-    } else {
+        showAlert("Please fill all required fields", "error");
+      } else {
         switch (e.code) {
-            case "auth/invalid-email":
-                showAlert( "Invalid email ID","error");
-                break;
-            case "auth/user-disabled":
-                showAlert( "Your account has been suspended. Please contact admin.","error");
-                break;
-            case "auth/user-not-found":
-                showAlert( "No user found with this email ID. Please sign up.","error");
-                break;
-            case "auth/wrong-password":
-                showAlert( "Wrong password","error");
-                break;
-            case "auth/network-request-failed":
-                showAlert( "Login failed due to network issue","error");
-                break;
-            case "auth/too-many-requests":
-                showAlert( "Too many requests. Please try again later.","error");
-                break;
-            case "auth/invalid-login-credentials":
-                showAlert( "Invalid credentials","error");
-                break;
-            default:
-                showAlert( e.message,"error");
-                break;
+          case "auth/invalid-email":
+            showAlert("Invalid email ID", "error");
+            break;
+          case "auth/user-disabled":
+            showAlert(
+              "Your account has been suspended. Please contact admin.",
+              "error"
+            );
+            break;
+          case "auth/user-not-found":
+            showAlert(
+              "No user found with this email ID. Please sign up.",
+              "error"
+            );
+            break;
+          case "auth/wrong-password":
+            showAlert("Wrong password", "error");
+            break;
+          case "auth/network-request-failed":
+            showAlert("Login failed due to network issue", "error");
+            break;
+          case "auth/too-many-requests":
+            showAlert("Too many requests. Please try again later.", "error");
+            break;
+          case "auth/invalid-login-credentials":
+            showAlert("Invalid credentials", "error");
+            break;
+          default:
+            showAlert(e.message, "error");
+            break;
         }
-    }  
+      }
     });
 });
 
@@ -391,7 +396,7 @@ signup_btn.addEventListener("click", function (event) {
   navigator.vibrate([100]);
 
   event.preventDefault();
- 
+
   btnDisableOrEnable(signup_btn);
 
   signup_btn.children[0].classList.add("fa-spinner", "fa-spin");
@@ -404,7 +409,7 @@ signup_btn.addEventListener("click", function (event) {
   // Add validation logic for password and confirm password match
   if (password !== confirmPassword) {
     navigator.vibrate([100, 50, 100]);
-showAlert("Password do not Match","error")
+    showAlert("Password do not Match", "error");
     signup_btn.children[0].classList.remove("fa-spinner", "fa-spin");
     btnDisableOrEnable(signup_btn);
   } else if (
@@ -414,13 +419,11 @@ showAlert("Password do not Match","error")
     password === ""
   ) {
     navigator.vibrate([100, 50, 100]);
-    showAlert("*Please fill all Required fields","error")
+    showAlert("*Please fill all Required fields", "error");
 
     signup_btn.children[0].classList.remove("fa-spinner", "fa-spin");
     btnDisableOrEnable(signup_btn);
-  }
- 
-  else {
+  } else {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userdetails) => {
         // Sign up successful, redirect or perform additional actions
@@ -445,8 +448,8 @@ showAlert("Password do not Match","error")
           userdetails.user.emailVerified,
           false
         );
-      
-        showAlert("sign up successfully","successful")
+
+        showAlert("sign up successfully", "successful");
         setTimeout(() => {
           signupForm.reset();
           document.querySelector(".login-form").style.display = "block";
@@ -461,21 +464,18 @@ showAlert("Password do not Match","error")
         navigator.vibrate([100, 50, 100]);
         switch (e.code) {
           case "auth/network-request-failed":
-              showAlert("Login failed due to network issue", "error", );
-              break;
+            showAlert("Login failed due to network issue", "error");
+            break;
           case "auth/email-already-in-use":
-              showAlert("Email ID already exists", "error");
-              break;
+            showAlert("Email ID already exists", "error");
+            break;
           case "auth/invalid-email":
-              showAlert("Invalid email ID", "error");
-              break;
+            showAlert("Invalid email ID", "error");
+            break;
           default:
-              showAlert( e.message, "error");
-              break;
-      }
-
-       
+            showAlert(e.message, "error");
+            break;
+        }
       });
   }
 });
-

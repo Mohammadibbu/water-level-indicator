@@ -26,7 +26,6 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
- 
 }
 
 .containerr {
@@ -35,7 +34,7 @@ body {
 }
 
 body::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 10%;
   left: 0;
@@ -44,7 +43,7 @@ body::before {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23e7008a" fill-opacity="1" d="M0,288L60,261.3C120,235,240,181,360,160C480,139,600,149,720,133.3C840,117,960,75,1080,96C1200,117,1320,203,1380,245.3L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>');
   background-size: cover;
   z-index: 0; /* Ensure the SVG is behind the content */
-  opacity: 0.5; 
+  opacity: 0.5;
 }
 
 .containerr {
@@ -93,7 +92,7 @@ input:focus {
   border-bottom: #216625 3px solid;
 }
 
-.btns{
+.btns {
   font-family: "Mochiy Pop One", sans-serif;
   font-family: "Pangolin", cursive;
   width: 100%;
@@ -226,7 +225,7 @@ label {
   left: 50%;
   transform: translateX(-50%);
   bottom: 50px;
-  right:0;
+  right: 0;
   min-width: 90px;
   max-width: 300px;
   z-index: 999999;
@@ -259,4 +258,14 @@ label {
   background-color: #f0ad4e;
   color: #ffffff;
   border-color: #eea236;
+}
+/* Media Queries for Mobile View */
+@media (max-width: 600px) {
+  .alertContainer {
+    left: 40%;
+  }
+
+  .alert {
+    width: 300px;
+  }
 }
