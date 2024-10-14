@@ -289,7 +289,7 @@ loginForm_btn.addEventListener("click", (e) => {
           "userEmail<@#(0192837465)#@>",
           JSON.stringify(userdetails.user)
         );
-        localStorage.setItem("LOgiN#@$%^&;;", true);
+        // localStorage.setItem("LOgiN#@$%^&;;", true);
 
         //set mail verified
         get(child(ref(connectDB), "users/" + userdetails.user.uid))
