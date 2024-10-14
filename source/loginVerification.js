@@ -45,7 +45,7 @@ function verifyUser(data) {
     ) {
       console.log("no data availBLe", data);
 
-      // location.replace("index.html");
+      location.replace("index.html");
     } else {
       IsAlreadyHaveProductId(data.uid);
       console.log("data avail", data);
