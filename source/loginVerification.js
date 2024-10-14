@@ -187,13 +187,18 @@ function IsAlreadyHaveProductId(uid) {
 document.getElementById("product").addEventListener("click", productCheck);
 //---------------------------------End functions------------------------------
 //-----------------Get data From Firebase database--------------
-get(child(reference, "users/" + userAuthUid))
-  .then((snapshot) => {
-    let data = snapshot.val();
 
-    verifyUser(data);
-  })
-  .catch((e) => {
-    console.log("error while fetching data", e);
-    // location.replace("index.html");
-  });
+function firebaseDB() {
+  get(child(reference, "users/" + userAuthUid))
+    .then((snapshot) => {
+      let data = snapshot.val();
+      console.log(data);
+
+      verifyUser(data);
+    })
+    .catch((e) => {
+      console.log("error while fetching data", e);
+      // location.replace("index.html");
+    });
+}
+firebaseDB();
