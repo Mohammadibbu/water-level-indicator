@@ -20,8 +20,17 @@ import {
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 window.onload = () => {
-  sessionStorage.removeItem("userid<@#(1029384756)#@>");
-  sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
+  const userAuthUid = sessionStorage.getItem("userid<@#(1029384756)#@>");
+  const userAuthExtra = JSON.parse(
+    sessionStorage.getItem("userEmail<@#(0192837465)#@>")
+  );
+  // sessionStorage.removeItem("userid<@#(1029384756)#@>");
+  // sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
+  if (userAuthUid && userAuthExtra) {
+    location.replace("mainpage.html");
+  } else {
+    return;
+  }
 };
 // -------------showpassword Template--------------------
 

@@ -113,18 +113,19 @@ function productCheck() {
       .then((snapshot) => {
         let data = snapshot.val();
         console.log(data.ui);
-        if(data.Registered==true){
-          alert("Given Product id already registered with another account")}
-          else{
-            update(child(reference, "products/" + productid), {
-              Registered: true,
+        if (data.Registered == true) {
+          alert("Given Product id already registered with another account");
+        } else {
+          update(child(reference, "products/" + productid), {
+            Registered: true,
+          })
+            .then(() => {
+              uicheck(productid, data);
             })
-              .then(() => {
-                uicheck(productid, data);
-              })
-              .catch((e) => {
-                // alert("something Went Wrong\nplease Try Again\nERROR:", e.code);
-              });}
+            .catch((e) => {
+              // alert("something Went Wrong\nplease Try Again\nERROR:", e.code);
+            });
+        }
       })
       .catch((e) => {
         alert("please enter a valid product id");
@@ -171,6 +172,7 @@ document.getElementById("product").addEventListener("click", productCheck);
 get(child(reference, "users/" + userAuthUid))
   .then((snapshot) => {
     let data = snapshot.val();
+
     verifyUser(data);
   })
   .catch((e) => {
