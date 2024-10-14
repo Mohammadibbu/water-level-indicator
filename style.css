@@ -261,9 +261,9 @@ label {
 }
 /* Media Queries for Mobile View */
 @media (max-width: 600px) {
-  /* .alertContainer {
+  .alertContainer {
     left: 40%;
-  } */
+  }
 
   .alert {
     width: 300px;
