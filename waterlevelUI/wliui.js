@@ -90,10 +90,23 @@ function logout(userAuthExtra) {
 //-----------------------END  functions------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
-  const userAuthUid = sessionStorage.getItem("userid<@#(1029384756)#@>");
-  const userAuthExtra = JSON.parse(
-    sessionStorage.getItem("userEmail<@#(0192837465)#@>")
-  );
+  // const userAuthUid = sessionStorage.getItem("userid<@#(1029384756)#@>");
+  // const userAuthExtra = JSON.parse(
+  //   sessionStorage.getItem("userEmail<@#(0192837465)#@>")
+  // );
+  function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == " ") c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null; // Return null if not found
+  }
+  const userAuthUid = getCookie("userid<@#(1029384756)#@>");
+  const userAuthExtra = JSON.parse(getCookie("userEmail<@#(0192837465)#@>"));
+
   //logout btn
   document.getElementById("logout").addEventListener("click", () => {
     logout(userAuthExtra);
