@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=0"
+    />
 
     <title>Water Level indicator</title>
     <link rel="stylesheet" href="wliui.css" />
@@ -27,17 +31,17 @@
             <!-- <li><a href="#" id="pid"></a></li> -->
             <li><a href="#" id="device-list">Devices</a></li>
             <!-- Modal Dialog -->
-<div id="deviceModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Device Information</h2>
-    <hr>
-    <p>Device Name: <span id="deviceName">Device A</span></p>
-    <p>Device ID: <span id="pid">12345</span></p>
-  </div>
-</div>
+            <div id="deviceModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Device Information</h2>
+                <hr />
+                <p>Device Name: <span id="deviceName">Device A</span></p>
+                <p>Device ID: <span id="pid">12345</span></p>
+              </div>
+            </div>
 
-            <li><a href="#" id="logout">Logout</a></li>    
+            <li><a href="#" id="logout">Logout</a></li>
           </ul>
         </div>
         <span class="navTrigger">
@@ -61,15 +65,21 @@
             <div class="layer2"></div>
             <div class="layer3"></div>
             <div class="layer4"></div> -->
-            
-             
-        
+
             <div class="water" id="waterLevel">
               <div class="tank">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 160" class="wave">
-                    <path fill="#0099ff" fill-opacity="0.5" d="M0,80L30,90C60,100,120,120,180,130C240,140,300,140,360,130C420,120,480,100,540,90C600,80,660,80,720,80C780,80,840,80,900,90C960,100,1020,120,1080,130C1140,140,1200,140,1260,130C1320,120,1380,100,1410,90L1440,80L1440,160L1410,160C1380,160,1320,160,1260,160C1200,160,1140,160,1080,160C1020,160,960,160,900,160C840,160,780,160,720,160C660,160,600,160,540,160C480,160,420,160,360,160C300,160,240,160,180,160C120,160,60,160,30,160L0,160Z"></path>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1440 160"
+                  class="wave"
+                >
+                  <path
+                    fill="#0099ff"
+                    fill-opacity="0.5"
+                    d="M0,80L30,90C60,100,120,120,180,130C240,140,300,140,360,130C420,120,480,100,540,90C600,80,660,80,720,80C780,80,840,80,900,90C960,100,1020,120,1080,130C1140,140,1200,140,1260,130C1320,120,1380,100,1410,90L1440,80L1440,160L1410,160C1380,160,1320,160,1260,160C1200,160,1140,160,1080,160C1020,160,960,160,900,160C840,160,780,160,720,160C660,160,600,160,540,160C480,160,420,160,360,160C300,160,240,160,180,160C120,160,60,160,30,160L0,160Z"
+                  ></path>
                 </svg>
-            </div>
+              </div>
             </div>
             <div class="txt" id="text"></div>
           </div>
