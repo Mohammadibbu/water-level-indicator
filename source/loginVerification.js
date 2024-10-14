@@ -10,11 +10,11 @@ import {
   remove,
 } from "./firebaseinitialization.js";
 
-const userAuthUid = sessionStorage.getItem("userid<@#(1029384756)#@>");
+const userAuthUid = localStorage.getItem("userid<@#(1029384756)#@>");
 const userAuthExtra = JSON.parse(
-  sessionStorage.getItem("userEmail<@#(0192837465)#@>")
+  localStorage.getItem("userEmail<@#(0192837465)#@>")
 );
-const userLogindata = sessionStorage.getItem("LOgiN#@$%^&;;");
+const userLogindata = localStorage.getItem("LOgiN#@$%^&;;");
 
 // console.log(userAuthEmailerified.emailVerified);
 const reference = ref(connectDB);
@@ -57,9 +57,9 @@ function logout() {
         console.log("logged out");
         // localStorage.removeItem("userid<@#(1029384756)#@>");
         // localStorage.removeItem("userEmail<@#(0192837465)#@>");
-        sessionStorage.removeItem("userid<@#(1029384756)#@>");
-        sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
-        sessionStorage.removeItem("LOgiN#@$%^&;;");
+        localStorage.removeItem("userid<@#(1029384756)#@>");
+        localStorage.removeItem("userEmail<@#(0192837465)#@>");
+        localStorage.removeItem("LOgiN#@$%^&;;");
       })
       .catch((e) => {
         alert("something Went Wrong\nplease Try Again\nERROR:", e.code);

@@ -69,9 +69,9 @@ function logout(userAuthExtra) {
         console.log("logged out");
         // localStorage.removeItem("userid<@#(1029384756)#@>");
         // localStorage.removeItem("userEmail<@#(0192837465)#@>");
-        sessionStorage.removeItem("userid<@#(1029384756)#@>");
-        sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
-        sessionStorage.removeItem("LOgiN#@$%^&;;");
+        localStorage.removeItem("userid<@#(1029384756)#@>");
+        localStorage.removeItem("userEmail<@#(0192837465)#@>");
+        localStorage.removeItem("LOgiN#@$%^&;;");
       })
       .catch((e) => {
         alert("something Went Wrong\nplease Try Again\nERROR:", e.code);
@@ -85,9 +85,9 @@ function logout(userAuthExtra) {
 //-----------------------END  functions------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
-  const userAuthUid = sessionStorage.getItem("userid<@#(1029384756)#@>");
+  const userAuthUid = localStorage.getItem("userid<@#(1029384756)#@>");
   const userAuthExtra = JSON.parse(
-    sessionStorage.getItem("userEmail<@#(0192837465)#@>")
+    localStorage.getItem("userEmail<@#(0192837465)#@>")
   );
   //logout btn
   document.getElementById("logout").addEventListener("click", () => {
@@ -133,7 +133,7 @@ toggleButton.addEventListener("click", function () {
   slider.classList.toggle("active");
   if (slider.classList.contains("active")) {
     AutoOrManualToggle.innerHTML = "<b>AutoMode On</b>";
-    updatingWorkingmode(true,"Null");
+    updatingWorkingmode(true, "Null");
     manualControlBtn.setAttribute("disabled", "true");
     btnstatus.innerHTML = "Auto mode Enabled";
     powerButton.classList.remove("on", isOn);
@@ -173,33 +173,31 @@ $(".navTrigger").click(function () {
   $("#mainListDiv").fadeIn();
 });
 
+// Get the modal
+var modal = document.getElementById("deviceModal");
 
-  // Get the modal
-  var modal = document.getElementById('deviceModal');
+// Get the button that opens the modal
+var deviceLink = document.getElementById("device-list");
 
-  // Get the button that opens the modal
-  var deviceLink = document.getElementById('device-list');
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName('close')[0];
+// When the user clicks on the "Devices" link, open the modal
+deviceLink.onclick = function (event) {
+  event.preventDefault(); // Prevent the default link behavior
+  modal.style.display = "block"; // Show the modal
+};
 
-  // When the user clicks on the "Devices" link, open the modal
-  deviceLink.onclick = function(event) {
-    event.preventDefault(); // Prevent the default link behavior
-    modal.style.display = 'block'; // Show the modal
-  };
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none"; // Hide the modal
+};
 
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.style.display = 'none'; // Hide the modal
-  };
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = 'none'; // Hide the modal
-    }
-  };
-
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none"; // Hide the modal
+  }
+};
 
 setInterval(productData, 3000);

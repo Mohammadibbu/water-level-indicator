@@ -20,9 +20,9 @@ import {
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 window.onload = () => {
-  const userAuthUid = sessionStorage.getItem("userid<@#(1029384756)#@>");
+  const userAuthUid = localStorage.getItem("userid<@#(1029384756)#@>");
   const userAuthExtra = JSON.parse(
-    sessionStorage.getItem("userEmail<@#(0192837465)#@>")
+    localStorage.getItem("userEmail<@#(0192837465)#@>")
   );
   // sessionStorage.removeItem("userid<@#(1029384756)#@>");
   // sessionStorage.removeItem("userEmail<@#(0192837465)#@>");
@@ -284,15 +284,12 @@ loginForm_btn.addEventListener("click", (e) => {
         showAlert("Login Successfully...", "successful");
         navigator.vibrate([100, 50, 100]);
 
-        sessionStorage.setItem(
-          "userid<@#(1029384756)#@>",
-          userdetails.user.uid
-        );
-        sessionStorage.setItem(
+        localStorage.setItem("userid<@#(1029384756)#@>", userdetails.user.uid);
+        localStorage.setItem(
           "userEmail<@#(0192837465)#@>",
           JSON.stringify(userdetails.user)
         );
-        sessionStorage.setItem("LOgiN#@$%^&;;", true);
+        localStorage.setItem("LOgiN#@$%^&;;", true);
 
         //set mail verified
         get(child(ref(connectDB), "users/" + userdetails.user.uid))
