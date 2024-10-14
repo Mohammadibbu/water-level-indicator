@@ -85,7 +85,7 @@ function logout() {
   } else {
     navigator.vibrate([50]);
     // alert("you cancel the logout Process");
-    return;
+    // return;
   }
 }
 document.getElementById("logout").addEventListener("click", logout);
