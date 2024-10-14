@@ -43,8 +43,7 @@ window.onload = () => {
     getCookie("userid<@#(1029384756)#@>") &&
     getCookie("userEmail<@#(0192837465)#@>")
   ) {
-    console.log("get DB");
-
+    // console.log("get DB");
     location.replace("mainpage.html");
     return;
   }
