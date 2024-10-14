@@ -284,15 +284,12 @@ loginForm_btn.addEventListener("click", (e) => {
         showAlert("Login Successfully...", "successful");
         navigator.vibrate([100, 50, 100]);
 
-        sessionStorage.setItem(
-          "userid<@#(1029384756)#@>",
-          userdetails.user.uid
-        );
-        sessionStorage.setItem(
+        localStorage.setItem("userid<@#(1029384756)#@>", userdetails.user.uid);
+        localStorage.setItem(
           "userEmail<@#(0192837465)#@>",
           JSON.stringify(userdetails.user)
         );
-        sessionStorage.setItem("LOgiN#@$%^&;;", true);
+        localStorage.setItem("LOgiN#@$%^&;;", true);
 
         //set mail verified
         get(child(ref(connectDB), "users/" + userdetails.user.uid))
