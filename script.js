@@ -46,8 +46,6 @@ window.onload = () => {
     console.log("get DB");
 
     location.replace("mainpage.html");
-  } else {
-    return;
   }
   // if (userAuthUid && userAuthExtra) {
   //   location.replace("mainpage.html");
