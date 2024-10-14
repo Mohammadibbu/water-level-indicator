@@ -44,6 +44,7 @@ function verifyUser(data) {
       !data.emailVerified == userAuthExtra.emailVerified
     ) {
       console.log("no data availBLe", data);
+      alert("this is the issue 1");
       location.replace("index.html");
     } else {
       IsAlreadyHaveProductId(data.uid);
